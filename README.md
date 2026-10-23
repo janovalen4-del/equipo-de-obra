@@ -4,6 +4,13 @@ Landing page para un negocio de construcción y refacciones, migrada de una demo
 HTML/CSS/JS vanilla a **Next.js + TypeScript**. La demo original se conserva en
 `legacy/` como referencia de diseño.
 
+## Demo en vivo
+
+- **Sitio:** https://equipo-de-obra.vercel.app
+- **Panel:** https://equipo-de-obra.vercel.app/admin/login → usuario `admin`, contraseña `demo1234`
+
+La demo se sirve sin base de datos (el formulario no guarda; lo avisa en el sitio).
+
 ## Stack
 
 - **Next.js 16** (App Router, Turbopack)
