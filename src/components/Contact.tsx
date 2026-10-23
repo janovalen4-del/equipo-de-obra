@@ -29,6 +29,15 @@ export function Contact() {
     const details = String(data.get("mensaje") ?? "").trim();
     const website = String(data.get("website") ?? "");
 
+    if (siteConfig.isDemo) {
+      setFeedback(
+        "¡Gracias por tu consulta! (Sitio de demostración: los datos no se guardan ni se envían).",
+      );
+      form.reset();
+      setSubmitting(false);
+      return;
+    }
+
     const message = [
       "Hola, quiero solicitar una evaluación de un trabajo.",
       `Nombre: ${name}`,

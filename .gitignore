@@ -44,3 +44,5 @@ next-env.d.ts
 # base de datos SQLite local
 /prisma/*.db
 /prisma/*.db-journal
+
+.vercel
