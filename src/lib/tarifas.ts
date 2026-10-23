@@ -1,16 +1,4 @@
-/**
- * Tarifas de referencia del cotizador orientativo.
- *
- * ⚠️ IMPORTANTE: son VALORES DE REFERENCIA de mercado (Argentina, relevados
- * en octubre de 2026) usados SOLO como punto de partida. AJUSTALOS con los
- * precios reales del negocio — se desactualizan con la inflación.
- *
- * El resultado que ve el cliente es un ESTIMADO ORIENTATIVO, nunca un precio
- * final. La cotización definitiva se define tras evaluar el trabajo.
- *
- * Fuentes de referencia: Cámara Argentina de la Construcción, IDECBA (CABA),
- * Sismat, UOCRA y relevamientos de mercado de pintura/refacción.
- */
+// Tarifas del cotizador. Valores de referencia (oct 2026): AJUSTAR con precios reales.
 
 export type Rubro =
   | "construccion"
@@ -23,28 +11,20 @@ export type Estado = "bueno" | "regular" | "malo";
 
 export type Zona = "caba" | "norte" | "otra";
 
-/** Rango de precio por m² [mínimo, máximo], en pesos argentinos (ARS). AJUSTAR. */
 export const TARIFAS_POR_M2: Record<Rubro, [number, number]> = {
-  // AJUSTAR: ampliaciones / mampostería / contrapisos (obra parcial).
-  construccion: [800_000, 1_600_000],
-  // AJUSTAR: instalación / renovación eléctrica, por m² de propiedad (aproximado).
-  electricidad: [40_000, 120_000],
-  // AJUSTAR: rejas, portones y estructuras metálicas.
-  herreria: [150_000, 400_000],
-  // AJUSTAR: mano de obra de pintura interior/exterior (referencia bien relevada).
-  pintura: [4_000, 12_000],
-  // AJUSTAR: renovación integral de ambientes (baño/cocina suelen estar arriba).
-  refaccion: [700_000, 2_800_000],
+  construccion: [800_000, 1_600_000], // AJUSTAR
+  electricidad: [40_000, 120_000], // AJUSTAR
+  herreria: [150_000, 400_000], // AJUSTAR
+  pintura: [4_000, 12_000], // AJUSTAR
+  refaccion: [700_000, 2_800_000], // AJUSTAR
 };
 
-/** Factor por estado del lugar. AJUSTAR. */
 export const FACTOR_ESTADO: Record<Estado, number> = {
   bueno: 1.0,
   regular: 1.2,
   malo: 1.4,
 };
 
-/** Factor por zona, incluye viáticos/traslado. AJUSTAR. */
 export const FACTOR_ZONA: Record<Zona, number> = {
   caba: 1.0,
   norte: 1.05,

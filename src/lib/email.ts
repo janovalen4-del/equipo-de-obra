@@ -8,10 +8,6 @@ export type LeadNotification = {
   message?: string | null;
 };
 
-/**
- * Envía una notificación por email vía Resend (https://resend.com).
- * Si no está configurado, no hace nada y devuelve `false`.
- */
 export async function sendLeadNotification(
   lead: LeadNotification,
 ): Promise<boolean> {
@@ -19,10 +15,7 @@ export async function sendLeadNotification(
   const from = process.env.RESEND_FROM;
   const to = process.env.RESEND_TO;
 
-  if (!apiKey || !from || !to) {
-    console.info("[email] Resend no configurado; se omite la notificación.");
-    return false;
-  }
+  if (!apiKey || !from || !to) return false;
 
   const text = [
     `Nueva consulta desde ${siteConfig.name}`,
@@ -49,13 +42,8 @@ export async function sendLeadNotification(
         text,
       }),
     });
-
-    if (!response.ok) {
-      console.error("[email] Resend respondió", response.status, await response.text());
-    }
     return response.ok;
-  } catch (error) {
-    console.error("[email] Error al enviar la notificación", error);
+  } catch {
     return false;
   }
 }

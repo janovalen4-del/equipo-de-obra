@@ -1,20 +1,17 @@
 import { z } from "zod";
 import { LeadStatus } from "@prisma/client";
 
-/** Validación del formulario de contacto público. */
 export const leadSchema = z.object({
   name: z.string().trim().min(1).max(80),
   phone: z.string().trim().min(1).max(40),
   zone: z.string().trim().min(1).max(100),
   service: z.string().trim().min(1).max(80),
   message: z.string().trim().max(1000).optional(),
-  // Honeypot: los bots lo completan; los humanos lo dejan vacío.
-  website: z.string().optional(),
+  website: z.string().optional(), // honeypot
 });
 
 export type LeadInput = z.infer<typeof leadSchema>;
 
-// Derivado del enum de Prisma para evitar duplicación/desincronización.
 export const LEAD_STATUSES = Object.values(LeadStatus) as LeadStatus[];
 export type LeadStatusValue = LeadStatus;
 

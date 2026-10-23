@@ -11,10 +11,6 @@ type WhatsAppLinkProps = {
   children: ReactNode;
 };
 
-/**
- * Enlace de contacto por WhatsApp. Si el número está configurado, abre `wa.me`
- * en una pestaña nueva; si no, desplaza al formulario de contacto (modo demo).
- */
 export function WhatsAppLink({
   message,
   className,
