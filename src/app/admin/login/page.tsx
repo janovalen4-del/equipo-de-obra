@@ -29,10 +29,13 @@ export default function LoginPage() {
 
       if (res.ok) {
         router.push("/admin");
-        router.refresh();
         return;
       }
-      setError("Usuario o contraseña incorrectos.");
+      if (res.status === 429) {
+        setError("Demasiados intentos. Esperá unos minutos y probá de nuevo.");
+      } else {
+        setError("Usuario o contraseña incorrectos.");
+      }
     } catch {
       setError("No se pudo conectar. Intentá de nuevo.");
     } finally {

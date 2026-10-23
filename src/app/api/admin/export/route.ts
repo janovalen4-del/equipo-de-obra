@@ -7,9 +7,15 @@ export async function GET() {
     return NextResponse.json({ ok: false }, { status: 401 });
   }
 
-  const leads = await prisma.lead.findMany({
-    orderBy: { createdAt: "desc" },
-  });
+  let leads;
+  try {
+    leads = await prisma.lead.findMany({
+      orderBy: { createdAt: "desc" },
+    });
+  } catch (error) {
+    console.error("[admin] Error al exportar CSV", error);
+    return NextResponse.json({ ok: false, error: "server" }, { status: 500 });
+  }
 
   const header = [
     "fecha",
@@ -31,7 +37,11 @@ export async function GET() {
     lead.message ?? "",
   ]);
 
-  const escape = (cell: string) => `"${cell.replace(/"/g, '""')}"`;
+  // Previene inyección de fórmulas en Excel (celdas que empiezan con =,+,-,@).
+  const escape = (cell: string) => {
+    if (/^[=+\-@\t\r]/.test(cell)) cell = `'${cell}`;
+    return `"${cell.replace(/"/g, '""')}"`;
+  };
   const csv = [header, ...rows]
     .map((row) => row.map((cell) => escape(String(cell))).join(","))
     .join("\n");

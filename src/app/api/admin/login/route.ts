@@ -6,8 +6,15 @@ import {
   sessionCookieName,
   sessionMaxAgeSeconds,
 } from "@/lib/auth";
+import { isRateLimited } from "@/lib/rate-limit";
+import { clientIp } from "@/lib/ip";
 
 export async function POST(request: Request) {
+  const ip = clientIp(request);
+  if (isRateLimited(`login:ip:${ip}`)) {
+    return NextResponse.json({ ok: false }, { status: 429 });
+  }
+
   let body: { username?: unknown; password?: unknown };
   try {
     body = await request.json();
@@ -17,6 +24,12 @@ export async function POST(request: Request) {
 
   const username = String(body?.username ?? "");
   const password = String(body?.password ?? "");
+
+  // Límite también por usuario, para dificultar fuerza bruta dirigida.
+  if (isRateLimited(`login:user:${username}`)) {
+    return NextResponse.json({ ok: false }, { status: 429 });
+  }
+
   const expectedUsername = process.env.ADMIN_USERNAME ?? "";
 
   if (

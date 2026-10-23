@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { redirect } from "next/navigation";
-import { isAuthenticated } from "@/lib/session";
+import { requireAuth } from "@/lib/session";
 import { siteConfig } from "@/lib/site";
 import { logout } from "./actions";
 
@@ -10,7 +9,7 @@ export default async function AdminLayout({
 }: {
   children: ReactNode;
 }) {
-  if (!(await isAuthenticated())) redirect("/admin/login");
+  await requireAuth();
 
   return (
     <div className="admin-shell">

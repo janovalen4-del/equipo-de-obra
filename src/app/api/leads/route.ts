@@ -3,15 +3,10 @@ import { prisma } from "@/lib/db";
 import { leadSchema } from "@/lib/lead";
 import { sendLeadNotification } from "@/lib/email";
 import { isRateLimited } from "@/lib/rate-limit";
-
-function clientIp(request: Request): string {
-  const forwarded = request.headers.get("x-forwarded-for");
-  if (forwarded) return forwarded.split(",")[0].trim();
-  return request.headers.get("x-real-ip") ?? "unknown";
-}
+import { clientIp } from "@/lib/ip";
 
 export async function POST(request: Request) {
-  if (isRateLimited(clientIp(request))) {
+  if (isRateLimited(`lead:${clientIp(request)}`)) {
     return NextResponse.json(
       { ok: false, error: "rate_limited" },
       { status: 429 },

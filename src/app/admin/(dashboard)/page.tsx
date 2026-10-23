@@ -1,11 +1,11 @@
-import { redirect } from "next/navigation";
 import { prisma } from "@/lib/db";
-import { isAuthenticated } from "@/lib/session";
-import { updateLeadStatus, deleteLead } from "./actions";
+import { requireAuth } from "@/lib/session";
+import { updateLeadStatus } from "./actions";
+import { DeleteLeadForm } from "./delete-lead-form";
 import { LEAD_STATUSES, LEAD_STATUS_LABELS } from "@/lib/lead";
 
 export default async function AdminDashboard() {
-  if (!(await isAuthenticated())) redirect("/admin/login");
+  await requireAuth();
 
   const leads = await prisma.lead.findMany({
     orderBy: { createdAt: "desc" },
@@ -46,7 +46,15 @@ export default async function AdminDashboard() {
             <tbody>
               {leads.map((lead) => (
                 <tr key={lead.id}>
-                  <td>{lead.createdAt.toLocaleDateString("es-AR")}</td>
+                  <td>
+                    {lead.createdAt.toLocaleString("es-AR", {
+                      day: "2-digit",
+                      month: "2-digit",
+                      year: "numeric",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}
+                  </td>
                   <td className="admin-strong">{lead.name}</td>
                   <td>
                     <a href={`tel:${lead.phone}`}>{lead.phone}</a>
@@ -68,16 +76,7 @@ export default async function AdminDashboard() {
                     </form>
                   </td>
                   <td>
-                    <form action={deleteLead}>
-                      <input type="hidden" name="id" value={lead.id} />
-                      <button
-                        className="admin-delete"
-                        type="submit"
-                        aria-label={`Eliminar consulta de ${lead.name}`}
-                      >
-                        Eliminar
-                      </button>
-                    </form>
+                    <DeleteLeadForm id={lead.id} name={lead.name} />
                   </td>
                 </tr>
               ))}
