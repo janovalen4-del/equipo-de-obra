@@ -1,5 +1,6 @@
 import { Brand } from "./Brand";
 import { Year } from "./Year";
+import { siteConfig } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -14,6 +15,7 @@ export function Footer() {
       <div className="container footer-bottom">
         <span>
           © <Year /> Equipo de Obra
+          {siteConfig.isDemo ? " · Sitio de demostración" : ""}
         </span>
         <span>Diseño web responsive</span>
       </div>

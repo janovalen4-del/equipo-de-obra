@@ -13,4 +13,6 @@ export const siteConfig = {
   email: process.env.NEXT_PUBLIC_EMAIL ?? "",
   zone: "CABA · Zona Norte",
   hours: "Lunes a sábados · 8 a 19 hs",
+  /** En true, muestra un aviso sutil de "sitio de demostración" en el footer. */
+  isDemo: process.env.NEXT_PUBLIC_IS_DEMO === "true",
 } as const;
