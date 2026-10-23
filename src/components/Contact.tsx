@@ -8,13 +8,18 @@ import { siteConfig } from "@/lib/site";
 
 export function Contact() {
   const [feedback, setFeedback] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setFeedback("");
+    setSubmitting(true);
 
     const form = event.currentTarget;
-    if (!form.reportValidity()) return;
+    if (!form.reportValidity()) {
+      setSubmitting(false);
+      return;
+    }
 
     const data = new FormData(form);
     const name = String(data.get("nombre") ?? "").trim();
@@ -22,6 +27,7 @@ export function Contact() {
     const zone = String(data.get("zona") ?? "").trim();
     const service = String(data.get("servicio") ?? "").trim();
     const details = String(data.get("mensaje") ?? "").trim();
+    const website = String(data.get("website") ?? "");
 
     const message = [
       "Hola, quiero solicitar una evaluación de un trabajo.",
@@ -34,22 +40,56 @@ export function Contact() {
       .filter(Boolean)
       .join("\n");
 
-    const url = buildWhatsAppUrl(message);
-
-    if (!url) {
-      setFeedback(
-        "El formulario está validado, pero WhatsApp aún no está configurado. Completá NEXT_PUBLIC_WHATSAPP_NUMBER en .env.local con el número autorizado del negocio.",
-      );
-      return;
+    // 1) Guardar la consulta en la base de datos.
+    let saved = false;
+    try {
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          phone,
+          zone,
+          service,
+          message: details,
+          website,
+        }),
+      });
+      saved = res.ok;
+    } catch {
+      saved = false;
     }
 
-    const popup = window.open(url, "_blank", "noopener,noreferrer");
-    setFeedback(
-      popup
-        ? "Se abrió WhatsApp con tu mensaje preparado. Revisalo y presioná Enviar en WhatsApp."
-        : "No se pudo abrir WhatsApp. Permití las ventanas emergentes y volvé a intentar.",
-    );
-  };
+    // 2) Abrir WhatsApp si el número está configurado.
+    const url = buildWhatsAppUrl(message);
+    let whatsappOpened = false;
+    if (url) {
+      const popup = window.open(url, "_blank", "noopener,noreferrer");
+      whatsappOpened = Boolean(popup);
+    }
+
+    // 3) Confirmación según lo que haya funcionado.
+    if (saved && whatsappOpened) {
+      setFeedback(
+        "¡Gracias! Recibimos tu consulta. También se abrió WhatsApp con tu mensaje.",
+      );
+    } else if (saved) {
+      setFeedback(
+        "¡Gracias! Recibimos tu consulta y te contactaremos a la brevedad.",
+      );
+    } else if (whatsappOpened) {
+      setFeedback(
+        "Se abrió WhatsApp con tu mensaje preparado. Revisalo y presioná Enviar.",
+      );
+    } else {
+      setFeedback(
+        "No pudimos enviar tu consulta. Intentá de nuevo o escribinos por WhatsApp.",
+      );
+    }
+
+    if (saved) form.reset();
+    setSubmitting(false);
+  }
 
   return (
     <section className="contact section-pad" id="contacto">
@@ -62,8 +102,8 @@ export function Contact() {
             <em>necesitás resolver.</em>
           </h2>
           <p>
-            Completá los datos y prepararemos un mensaje para que puedas
-            enviarlo por WhatsApp y coordinemos una evaluación.
+            Completá los datos y te contactaremos para coordinar una
+            evaluación. También podés enviarnos el mensaje por WhatsApp.
           </p>
           <div className="contact-meta">
             <span className="meta-icon">⌖</span>
@@ -87,6 +127,16 @@ export function Contact() {
             <h3>Solicitar una evaluación</h3>
             <p>Los campos marcados con * son obligatorios.</p>
           </div>
+
+          {/* Honeypot anti-spam: los humanos no lo ven ni lo completan. */}
+          <input
+            className="hp-field"
+            name="website"
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+          />
 
           <div className="field-row">
             <div className="field">
@@ -148,16 +198,21 @@ export function Contact() {
             />
           </div>
 
-          <button className="button button-primary button-full" type="submit">
-            Preparar mensaje por WhatsApp <span aria-hidden="true">↗</span>
+          <button
+            className="button button-primary button-full"
+            type="submit"
+            disabled={submitting}
+          >
+            {submitting ? "Enviando…" : "Enviar consulta"}{" "}
+            <span aria-hidden="true">↗</span>
           </button>
 
           <p className="form-feedback" role="status" aria-live="polite">
             {feedback}
           </p>
           <small className="privacy-note">
-            Al continuar, se abrirá WhatsApp con el mensaje preparado para que
-            lo revises y lo envíes.
+            Al enviar, nos compartís tus datos para que podamos contactarte.
+            No los usamos para otra cosa.
           </small>
         </form>
       </div>

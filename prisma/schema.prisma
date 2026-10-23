@@ -1,0 +1,31 @@
+// Equipo de Obra — modelo de datos (Prisma 6)
+// Para producción, cambiar el datasource a "postgresql" y apuntar
+// DATABASE_URL a Neon/Supabase/etc. El resto del código no cambia.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum LeadStatus {
+  nuevo
+  contactado
+  cotizado
+  ganado
+  perdido
+}
+
+model Lead {
+  id        String     @id @default(cuid())
+  name      String
+  phone     String
+  zone      String
+  service   String
+  message   String?
+  status    LeadStatus @default(nuevo)
+  createdAt DateTime   @default(now())
+}
