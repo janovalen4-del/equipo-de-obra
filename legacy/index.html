@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101a2a">
+  <meta name="description" content="Equipo de Obra: construcción, electricidad, herrería, pintura y refacciones en CABA y Zona Norte. Contanos qué necesitás y coordinamos una evaluación.">
+  <title>Equipo de Obra | Construcción y refacciones</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#inicio" aria-label="Equipo de Obra, inicio">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none"><path d="M5 34V16L20 5l15 11v18H23V23h-6v11H5Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M12 17h4m8 0h4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+        </span>
+        <span class="brand-copy">EQUIPO <b>DE OBRA</b><small>Construcción · Refacciones</small></span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="primary-nav" id="primaryNav" aria-label="Navegación principal">
+        <a href="#servicios">Servicios</a>
+        <a href="#proceso">Cómo trabajamos</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#preguntas">Preguntas</a>
+        <a class="nav-cta js-whatsapp" href="#contacto" data-message="Hola, quiero consultar por un trabajo de construcción o refacción.">Solicitar evaluación <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" id="inicio">
+      <div class="hero-image" role="img" aria-label="Estructura arquitectónica moderna en construcción"></div>
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> Construcción y mantenimiento</p>
+          <h1>Tu proyecto merece<br><em>una buena base.</em></h1>
+          <p class="hero-lead">Soluciones de obra y refacción con planificación, comunicación directa y atención al detalle, desde el primer contacto hasta la entrega.</p>
+          <div class="hero-actions">
+            <a class="button button-primary js-whatsapp" href="#contacto" data-message="Hola, quiero solicitar una evaluación para mi proyecto.">Hablemos de tu proyecto <span aria-hidden="true">↗</span></a>
+            <a class="button button-quiet" href="#servicios">Conocer servicios <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="hero-note"><span class="check-mark" aria-hidden="true">✓</span> Atención en CABA y Zona Norte. Consultá por otras zonas.</div>
+        </div>
+        <div class="hero-aside">
+          <span class="aside-number">01 <i>/ 04</i></span>
+          <p>Un equipo coordinado para acompañar las distintas etapas de tu obra.</p>
+          <a href="#proceso" aria-label="Conocer nuestro proceso">Descubrí cómo trabajamos <span aria-hidden="true">↘</span></a>
+        </div>
+      </div>
+      <div class="hero-bottom container">
+        <span>PLANIFICACIÓN</span><span class="hero-bottom-line"></span><span>EJECUCIÓN</span><span class="hero-bottom-line"></span><span>ENTREGA</span>
+      </div>
+    </section>
+
+    <section class="intro section-pad">
+      <div class="container intro-grid">
+        <div>
+          <p class="eyebrow eyebrow-dark">Un solo contacto, distintas soluciones</p>
+          <h2>De la idea inicial<br>al <em>último detalle.</em></h2>
+        </div>
+        <div class="intro-copy">
+          <p>Coordinar distintos rubros puede ser complejo. Nuestro enfoque es ayudarte a ordenar las necesidades, definir el alcance y avanzar con una comunicación clara durante el trabajo.</p>
+          <a class="text-link" href="#contacto">Contanos qué necesitás <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="container value-grid">
+        <article class="value-item"><span class="value-index">01</span><div><h3>Coordinación clara</h3><p>Un punto de contacto para conversar sobre el alcance y los próximos pasos.</p></div></article>
+        <article class="value-item"><span class="value-index">02</span><div><h3>Trabajo planificado</h3><p>Revisamos las necesidades antes de definir tareas, materiales y tiempos.</p></div></article>
+        <article class="value-item"><span class="value-index">03</span><div><h3>Atención al detalle</h3><p>Buscamos que cada etapa se realice con orden, prolijidad y seguimiento.</p></div></article>
+      </div>
+    </section>
+
+    <section class="services section-pad" id="servicios">
+      <div class="container">
+        <div class="section-heading">
+          <div><p class="eyebrow eyebrow-dark">Qué hacemos</p><h2>Servicios para avanzar<br><em>con confianza.</em></h2></div>
+          <p>Contanos qué tenés en mente. Podemos conversar sobre un trabajo puntual o una refacción que combine varios rubros.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card"><span class="service-icon" aria-hidden="true">⌂</span><span class="service-no">01 / OBRA</span><h3>Construcción general</h3><p>Mampostería, contrapisos, ampliaciones y trabajos de obra según las características del proyecto.</p><a class="text-link js-whatsapp" href="#contacto" data-message="Hola, quiero consultar por construcción general.">Consultar servicio <span>↗</span></a></article>
+          <article class="service-card"><span class="service-icon" aria-hidden="true">ϟ</span><span class="service-no">02 / INSTALACIONES</span><h3>Electricidad</h3><p>Consultas por instalaciones, iluminación, tableros y detección de fallas según evaluación técnica.</p><a class="text-link js-whatsapp" href="#contacto" data-message="Hola, quiero consultar por un trabajo de electricidad.">Consultar servicio <span>↗</span></a></article>
+          <article class="service-card"><span class="service-icon" aria-hidden="true">⌁</span><span class="service-no">03 / METAL</span><h3>Herrería</h3><p>Rejas, portones, estructuras y soluciones metálicas a definir según las medidas y necesidades.</p><a class="text-link js-whatsapp" href="#contacto" data-message="Hola, quiero consultar por un trabajo de herrería.">Consultar servicio <span>↗</span></a></article>
+          <article class="service-card"><span class="service-icon" aria-hidden="true">▱</span><span class="service-no">04 / TERMINACIONES</span><h3>Pintura e impermeabilización</h3><p>Trabajos de pintura interior y exterior, tratamiento de superficies y consultas por humedad.</p><a class="text-link js-whatsapp" href="#contacto" data-message="Hola, quiero consultar por pintura o impermeabilización.">Consultar servicio <span>↗</span></a></article>
+          <article class="service-card"><span class="service-icon" aria-hidden="true">◫</span><span class="service-no">05 / RENOVACIÓN</span><h3>Refacciones</h3><p>Renovación de ambientes, baños, cocinas y mejoras funcionales para espacios existentes.</p><a class="text-link js-whatsapp" href="#contacto" data-message="Hola, quiero consultar por una refacción.">Consultar servicio <span>↗</span></a></article>
+          <article class="service-card service-card-featured"><span class="service-icon" aria-hidden="true">↗</span><span class="service-no">¿TENÉS UN PROYECTO?</span><h3>Lo evaluamos juntos</h3><p>Si no sabés qué rubro necesitás, describinos la idea y vemos cuáles serían los próximos pasos.</p><a class="button button-dark js-whatsapp" href="#contacto" data-message="Hola, tengo un proyecto y necesito orientación para definir los trabajos.">Contar mi idea <span>↗</span></a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="process section-pad" id="proceso">
+      <div class="container">
+        <div class="section-heading section-heading-light">
+          <div><p class="eyebrow">Cómo trabajamos</p><h2>Un proceso simple,<br><em>paso a paso.</em></h2></div>
+          <p>La primera conversación sirve para entender el trabajo y definir la mejor forma de evaluarlo. El alcance, los costos y los plazos se confirman antes de comenzar.</p>
+        </div>
+        <div class="process-grid">
+          <article class="process-step"><span>01</span><h3>Nos contás</h3><p>Nos compartís la idea, la zona y qué necesitás resolver.</p></article>
+          <article class="process-step"><span>02</span><h3>Evaluamos</h3><p>Revisamos el alcance y, si corresponde, coordinamos una visita.</p></article>
+          <article class="process-step"><span>03</span><h3>Definimos</h3><p>Conversamos sobre tareas, materiales, costos y tiempos estimados.</p></article>
+          <article class="process-step"><span>04</span><h3>Coordinamos</h3><p>Con las condiciones acordadas, organizamos los próximos pasos.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects section-pad" id="proyectos">
+      <div class="container">
+        <div class="section-heading">
+          <div><p class="eyebrow eyebrow-dark">Inspiración y rubros</p><h2>Ideas para cada<br><em>espacio.</em></h2></div>
+          <p>Una selección visual ilustrativa de trabajos y ambientes relacionados con los servicios ofrecidos.</p>
+        </div>
+        <div class="project-grid">
+          <figure class="project-card project-large"><img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=85" alt="Estructura de una obra en construcción" loading="lazy"><figcaption><span>01</span><div><strong>Obra y ampliaciones</strong><small>Construcción general</small></div></figcaption></figure>
+          <figure class="project-card"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85" alt="Interior residencial moderno" loading="lazy"><figcaption><span>02</span><div><strong>Renovación de ambientes</strong><small>Refacciones</small></div></figcaption></figure>
+          <figure class="project-card"><img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=85" alt="Terminaciones de un ambiente residencial" loading="lazy"><figcaption><span>03</span><div><strong>Terminaciones</strong><small>Detalles y acabados</small></div></figcaption></figure>
+        </div>
+        <p class="image-disclaimer">Las fotografías son ilustrativas y no representan necesariamente trabajos realizados por el equipo.</p>
+      </div>
+    </section>
+
+    <section class="faq section-pad" id="preguntas">
+      <div class="container faq-layout">
+        <div><p class="eyebrow eyebrow-dark">Preguntas frecuentes</p><h2>Antes de<br><em>empezar.</em></h2><p class="faq-intro">Si tenés otra consulta, escribinos y la conversamos.</p><a class="text-link js-whatsapp" href="#contacto" data-message="Hola, tengo una consulta sobre un trabajo de obra.">Hacer una consulta <span>↗</span></a></div>
+        <div class="faq-list">
+          <article class="faq-item"><h3><button class="faq-question" type="button" aria-expanded="false">¿Cómo solicito una cotización?<span aria-hidden="true">+</span></button></h3><div class="faq-answer" hidden><p>Escribinos con una breve descripción del trabajo, la zona y, si tenés, fotos o medidas. Con esa información podemos conversar sobre los próximos pasos.</p></div></article>
+          <article class="faq-item"><h3><button class="faq-question" type="button" aria-expanded="false">¿Trabajan fuera de CABA?<span aria-hidden="true">+</span></button></h3><div class="faq-answer" hidden><p>La zona de referencia es CABA y Zona Norte. Consultanos por tu localidad para confirmar si podemos evaluar el proyecto.</p></div></article>
+          <article class="faq-item"><h3><button class="faq-question" type="button" aria-expanded="false">¿Puedo pedir varios trabajos juntos?<span aria-hidden="true">+</span></button></h3><div class="faq-answer" hidden><p>Sí, podés describir varios rubros en una misma consulta. El alcance y la posibilidad de coordinarlos se evalúan según cada proyecto.</p></div></article>
+          <article class="faq-item"><h3><button class="faq-question" type="button" aria-expanded="false">¿La calculadora da un precio definitivo?<span aria-hidden="true">+</span></button></h3><div class="faq-answer" hidden><p>No publicamos precios automáticos porque cada obra depende de sus medidas, materiales, estado y complejidad. La cotización se conversa después de evaluar esos factores.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact section-pad" id="contacto">
+      <div class="container contact-grid">
+        <div class="contact-copy">
+          <p class="eyebrow">Hablemos de tu proyecto</p>
+          <h2>Contanos qué<br><em>necesitás resolver.</em></h2>
+          <p>Completá los datos y prepararemos un mensaje para que puedas enviarlo por WhatsApp. La web de demostración no almacena ni envía tus datos a un servidor.</p>
+          <div class="contact-meta"><span class="meta-icon">⌖</span><div><strong>Zona de atención</strong><span>CABA · Zona Norte · Consultar otras zonas</span></div></div>
+          <div class="contact-meta"><span class="meta-icon">◷</span><div><strong>Horario de referencia</strong><span>Lunes a sábados · 8 a 19 hs</span></div></div>
+          <div class="contact-note">Antes de usar esta web para un negocio real, reemplazá los datos de ejemplo por información verificada.</div>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <div class="form-heading"><span>01 — CONTACTO</span><h3>Solicitar una evaluación</h3><p>Los campos marcados con * son obligatorios.</p></div>
+          <div class="field-row">
+            <div class="field"><label for="nombre">Nombre *</label><input id="nombre" name="nombre" autocomplete="name" required maxlength="80" placeholder="Tu nombre"></div>
+            <div class="field"><label for="telefono">Teléfono *</label><input id="telefono" name="telefono" type="tel" autocomplete="tel" required maxlength="40" placeholder="Tu número"></div>
+          </div>
+          <div class="field"><label for="zona">Localidad o barrio *</label><input id="zona" name="zona" required maxlength="100" placeholder="Ej. Villa Urquiza"></div>
+          <div class="field"><label for="servicio">¿Qué trabajo necesitás? *</label><select id="servicio" name="servicio" required><option value="">Elegí un servicio</option><option>Construcción general</option><option>Electricidad</option><option>Herrería</option><option>Pintura e impermeabilización</option><option>Refacción integral</option><option>Varios rubros / necesito orientación</option></select></div>
+          <div class="field"><label for="mensaje">Detalles del proyecto</label><textarea id="mensaje" name="mensaje" rows="4" maxlength="1000" placeholder="Contanos brevemente qué necesitás..."></textarea></div>
+          <button class="button button-primary button-full" type="submit">Preparar mensaje por WhatsApp <span aria-hidden="true">↗</span></button>
+          <p class="form-feedback" id="formFeedback" role="status" aria-live="polite"></p>
+          <small class="privacy-note">Al continuar, se abrirá WhatsApp con el mensaje preparado para que lo revises y lo envíes.</small>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-main">
+      <a class="brand brand-footer" href="#inicio"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><path d="M5 34V16L20 5l15 11v18H23V23h-6v11H5Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg></span><span class="brand-copy">EQUIPO <b>DE OBRA</b><small>Construcción · Refacciones</small></span></a>
+      <p>Planificación, coordinación y atención al detalle.</p>
+      <a class="footer-top" href="#inicio">Volver arriba ↑</a>
+    </div>
+    <div class="container footer-bottom"><span>© <span id="year"></span> Equipo de Obra · Sitio de demostración</span><span>Diseño web responsive</span></div>
+  </footer>
+
+  <a class="floating-whatsapp js-whatsapp" href="#contacto" data-message="Hola, quiero consultar por un trabajo de construcción o refacción." aria-label="Consultar por WhatsApp"><span aria-hidden="true">↗</span></a>
+</body>
+</html>
