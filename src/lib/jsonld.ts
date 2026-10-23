@@ -5,9 +5,11 @@ import { faqs } from "./content";
 export const localBusinessJsonLd: Record<string, unknown> = {
   "@context": "https://schema.org",
   "@type": "HomeAndConstructionBusiness",
+  "@id": `${siteConfig.siteUrl}/#business`,
   name: siteConfig.name,
   description: siteConfig.description,
   url: siteConfig.siteUrl,
+  image: `${siteConfig.siteUrl}/opengraph-image`,
   areaServed: {
     "@type": "AdministrativeArea",
     name: "CABA y Zona Norte, Buenos Aires, Argentina",

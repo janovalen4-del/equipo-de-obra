@@ -42,11 +42,6 @@ export const metadata: Metadata = {
     title: "Equipo de Obra | Construcción y refacciones",
     description: siteConfig.description,
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true },
-  },
 };
 
 export const viewport: Viewport = {

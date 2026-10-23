@@ -43,9 +43,11 @@ export function Contact() {
       return;
     }
 
-    window.open(url, "_blank", "noopener,noreferrer");
+    const popup = window.open(url, "_blank", "noopener,noreferrer");
     setFeedback(
-      "Se abrió WhatsApp con tu mensaje preparado. Revisalo y presioná Enviar en WhatsApp.",
+      popup
+        ? "Se abrió WhatsApp con tu mensaje preparado. Revisalo y presioná Enviar en WhatsApp."
+        : "No se pudo abrir WhatsApp. Permití las ventanas emergentes y volvé a intentar.",
     );
   };
 

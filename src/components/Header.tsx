@@ -54,6 +54,7 @@ export function Header() {
           ))}
           <WhatsAppLink
             className="nav-cta"
+            onClick={close}
             message="Hola, quiero consultar por un trabajo de construcción o refacción."
           >
             Solicitar evaluación <span aria-hidden="true">↗</span>

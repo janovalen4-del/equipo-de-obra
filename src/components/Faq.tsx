@@ -48,13 +48,18 @@ export function Faq() {
                   className="faq-question"
                   type="button"
                   aria-expanded={open.has(index)}
+                  aria-controls={`faq-answer-${index}`}
                   onClick={() => toggle(index)}
                 >
                   {faq.question}
                   <span aria-hidden="true">+</span>
                 </button>
               </h3>
-              <div className="faq-answer" hidden={!open.has(index)}>
+              <div
+                className="faq-answer"
+                id={`faq-answer-${index}`}
+                hidden={!open.has(index)}
+              >
                 <p>{faq.answer}</p>
               </div>
             </article>
