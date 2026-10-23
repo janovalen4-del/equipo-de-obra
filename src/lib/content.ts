@@ -188,6 +188,11 @@ export const faqs: FaqItem[] = [
     answer:
       "En la primera conversación acordamos si corresponde una visita para relevar medidas y detalles. Las visitas se coordinan según la zona y la disponibilidad.",
   },
+  {
+    question: "¿El cotizador del sitio da el precio final?",
+    answer:
+      "No. El cotizador te da un estimado orientativo de referencia para que tengas una idea del rango. El precio final puede variar según las medidas exactas, los materiales y el estado real del lugar, y se define después de evaluar el trabajo.",
+  },
 ];
 
 export const serviceOptions: string[] = [
